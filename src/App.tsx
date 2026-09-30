@@ -234,10 +234,9 @@ function App() {
             <span className="brand-subtitle">Zubeen Garg</span>
           </Link>
           <nav className="main-nav" aria-label="Main navigation">
-            <Link to="/">Home</Link>
-            <Link to="/journey">Journey</Link>
+            <Link to="/">Journey</Link>
             <Link to="/impact">Impact</Link>
-            <Link to="/login">Archive</Link>
+            <Link to="/archive">Archive</Link>
             {session ? <Link to="/admin">Dashboard</Link> : <Link to="/login">Login</Link>}
             {session ? (
               <button className="nav-button" onClick={() => handleLogout(setSession)}>
@@ -250,8 +249,9 @@ function App() {
 
       <main className="page-shell">
         <Routes>
-          <Route path="/" element={<HomePage articles={articles} loading={loadingArticles} />} />
+          <Route path="/" element={<JourneyPage />} />
           <Route path="/journey" element={<JourneyPage />} />
+          <Route path="/archive" element={<HomePage articles={articles} loading={loadingArticles} />} />
           <Route path="/impact" element={<ImpactPage />} />
           <Route path="/login" element={<LoginPage onSessionChange={setSession} />} />
           <Route path="/admin" element={session ? <AdminPage /> : <Navigate to="/login" replace />} />
